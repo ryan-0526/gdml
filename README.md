@@ -1,4 +1,4 @@
-# gsql 简介
+# gdml 简介
 
 gdml：主要实现 bi 项目 select 语句生成
 
