@@ -19,16 +19,19 @@ public class DataSource {
 
     private String driver;
 
+    private String type;
+
     public DataSource() {
     }
 
-    public DataSource(Long id, String schema, String databaseName, String ip, Integer port, String driver) {
+    public DataSource(Long id, String schema, String databaseName, String ip, Integer port, String driver, String type) {
         this.id = id;
         this.schema = schema;
         this.databaseName = databaseName;
         this.ip = ip;
         this.port = port;
         this.driver = driver;
+        this.type = type;
     }
 
     public Long getId() {
@@ -79,6 +82,14 @@ public class DataSource {
         this.driver = driver;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "DataSource{" +
@@ -88,6 +99,7 @@ public class DataSource {
                 ", ip='" + ip + '\'' +
                 ", port=" + port +
                 ", driver='" + driver + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

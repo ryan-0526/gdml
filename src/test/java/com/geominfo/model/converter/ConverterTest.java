@@ -58,7 +58,8 @@ public class ConverterTest {
                             databaseObj.getString("connectionName"),
                             databaseObj.getString("address"),
                             databaseObj.getInteger("port"),
-                            databaseObj.getString("driver")
+                            databaseObj.getString("driver"),
+                            nestedResultSet.getString("resource_name").toLowerCase()
                     );
                 }
 

@@ -57,6 +57,7 @@ public class PhysicalSchemaConverter {
                     .caption(tableElement.getAttribute("caption"))
                     .datasourceId(dataSource.getId().toString())
                     .factTable(isFact)
+                    .dsType(dataSource.getType())
                     .build();
 
             physicalSchema.getTables().add(table);
@@ -116,6 +117,7 @@ public class PhysicalSchemaConverter {
                     .datasourceId(dataSource.getId().toString())
                     .factTable(isFact)
                     .fields(fields)
+                    .dsType(dataSource.getType())
                     .build();
 
             physicalSchema.getVirtualTables().add(virtualTable);

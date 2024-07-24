@@ -14,6 +14,8 @@ public class VirtualTable {
     private final String datasourceId;
     private final boolean factTable;
     private final String tableName;
+
+    private final String dsType;
     private final List<Field> fields;
 
     private VirtualTable(Builder builder) {
@@ -24,6 +26,7 @@ public class VirtualTable {
         this.factTable = builder.factTable;
         this.tableName = builder.tableName;
         this.fields = builder.fields;
+        this.dsType = builder.dsType;
     }
 
     public static class Builder {
@@ -34,6 +37,8 @@ public class VirtualTable {
         private boolean factTable = false; // set default factTable to false
         private String tableName;
         private List<Field> fields;
+
+        private String dsType;
 
         public Builder uniqueId(String uniqueId) {
             this.uniqueId = uniqueId;
@@ -67,6 +72,11 @@ public class VirtualTable {
 
         public Builder fields(List<Field> fields) { // Assuming List<List<Field>> for nested structure
             this.fields = fields;
+            return this;
+        }
+
+        public Builder dsType(String dsType) {
+            this.dsType = dsType;
             return this;
         }
 
@@ -106,6 +116,10 @@ public class VirtualTable {
         return fields;
     }
 
+    public String getDsType() {
+        return dsType;
+    }
+
     @Override
     public String toString() {
         return "VirtualTable{" +
@@ -115,6 +129,7 @@ public class VirtualTable {
                 ", datasourceId='" + datasourceId + '\'' +
                 ", factTable=" + factTable +
                 ", tableName='" + tableName + '\'' +
+                ", dsType='" + dsType + '\'' +
                 ", fields=" + fields +
                 '}';
     }

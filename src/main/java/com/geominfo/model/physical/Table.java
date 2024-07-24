@@ -12,6 +12,7 @@ public class Table {
     private final String caption;
     private final String datasourceId;
     private final boolean factTable;
+    private final String dsType;
 
     private Table(Builder builder) {
         this.uniqueId = builder.uniqueId;
@@ -20,6 +21,7 @@ public class Table {
         this.caption = builder.caption;
         this.datasourceId = builder.datasourceId;
         this.factTable = builder.factTable;
+        this.dsType = builder.dsType;
     }
 
     public static class Builder {
@@ -29,6 +31,8 @@ public class Table {
         private String caption;
         private String datasourceId;
         private boolean factTable = false; // Set default factTable to false
+
+        private String dsType;
 
         public String getUniqueId() {
             return uniqueId;
@@ -52,6 +56,10 @@ public class Table {
 
         public boolean isFactTable() {
             return factTable;
+        }
+
+        public String getDsType() {
+            return dsType;
         }
 
         public Builder uniqueId(String uniqueId) {
@@ -81,6 +89,11 @@ public class Table {
 
         public Builder factTable(boolean factTable) {
             this.factTable = factTable;
+            return this;
+        }
+
+        public Builder dsType(String dsType) {
+            this.dsType = dsType;
             return this;
         }
 
@@ -115,6 +128,10 @@ public class Table {
         return factTable;
     }
 
+    public String getDsType() {
+        return dsType;
+    }
+
     @Override
     public String toString() {
         return "Table{" +
@@ -124,6 +141,7 @@ public class Table {
                 ", caption='" + caption + '\'' +
                 ", datasourceId='" + datasourceId + '\'' +
                 ", factTable=" + factTable +
+                ", dsType='" + dsType + '\'' +
                 '}';
     }
 }
