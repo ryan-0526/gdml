@@ -11,17 +11,13 @@ import org.xml.sax.InputSource;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.StringReader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * @author Pu
  * @since 2024/7/24
  */
 public class ConverterTest {
-
     public static void main(String[] args) {
         loadSchema();
 
@@ -40,9 +36,7 @@ public class ConverterTest {
                     "jdbc:postgresql://192.168.0.219:5432/edw", "gpadmin", "gpadmin123");
 
             statement = connection.createStatement();
-
             resultSet = statement.executeQuery("SELECT * FROM t_system_resources WHERE ID = 505170");
-
             if (resultSet.next()) {
                 String contentInfo = resultSet.getString("content_info");
                 JSONObject contentObject = JSONObject.parseObject(contentInfo);
@@ -85,7 +79,27 @@ public class ConverterTest {
 
         }catch (Exception e) {
             e.printStackTrace();
-        }
+        }finally {
+            try {
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                }
+                if (statement != null && !statement.isClosed()) {
+                    statement.close();
+                }
+                if (nestedStatement != null && !nestedStatement.isClosed()) {
+                    nestedStatement.close();
+                }
+                if (resultSet != null && !resultSet.isClosed()) {
+                    resultSet.close();
+                }
+                if (nestedResultSet != null && !nestedResultSet.isClosed()) {
+                    nestedResultSet.close();
+                }
+            }catch (Exception ignore) {
 
+            }
+        }
     }
+
 }
