@@ -6,9 +6,9 @@
  */
 package com.geominfo.gselect.context;
 
-import com.geominfo.gselect.dialect.Dialect;
+import com.geominfo.gselect.dialect.DmlDialect;
 
-public interface DialectResolver {
+public interface DmlDialectResolver {
 
-	Dialect resolveDialect(DialectType dialectType);
+	DmlDialect resolveDialect(DialectType dialectType);
 }

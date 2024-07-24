@@ -2,11 +2,11 @@ package com.geominfo.gselect.util;
 
 
 //拼接select语句工具类
-import com.geominfo.gselect.dialect.Dialect;
+import com.geominfo.gselect.dialect.DmlDialect;
 
 public class SelectGenerate {
 
-    private Dialect dialect;
+    private DmlDialect dialect;
 
     public String buildSelectString() {
         StringBuilder selectSql = new StringBuilder();

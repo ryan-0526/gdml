@@ -1,18 +1,18 @@
 package com.geominfo.gselect.context;
 
-import com.geominfo.gselect.dialect.DB2Dialect;
-import com.geominfo.gselect.dialect.Dialect;
-import com.geominfo.gselect.dialect.MySQLDialect;
-import com.geominfo.gselect.dialect.OracleDialect;
-import com.geominfo.gselect.dialect.PostgreSQLDialect;
-import com.geominfo.gselect.dialect.SQLServerDialect;
+import com.geominfo.gselect.dialect.DmlDB2Dialect;
+import com.geominfo.gselect.dialect.DmlDialect;
+import com.geominfo.gselect.dialect.DmlMySQLDialect;
+import com.geominfo.gselect.dialect.DmlOracleDialect;
+import com.geominfo.gselect.dialect.DmlPostgreSQLDialect;
+import com.geominfo.gselect.dialect.DmlSQLServerDialect;
 
 public enum DialectFactory {
 
     DB2 {
         @Override
-        public Dialect createDialect() {
-            return new DB2Dialect();
+        public DmlDialect createDialect() {
+            return new DmlDB2Dialect();
         }
         @Override
         public boolean productNameMatches(String databaseName) {
@@ -27,8 +27,8 @@ public enum DialectFactory {
 
     MYSQL {
         @Override
-        public Dialect createDialect() {
-            return new MySQLDialect();
+        public DmlDialect createDialect() {
+            return new DmlMySQLDialect();
         }
         @Override
         public boolean productNameMatches(String databaseName) {
@@ -42,8 +42,8 @@ public enum DialectFactory {
 
     ORACLE {
         @Override
-        public Dialect createDialect() {
-            return new OracleDialect();
+        public DmlDialect createDialect() {
+            return new DmlOracleDialect();
         }
         @Override
         public boolean productNameMatches(String databaseName) {
@@ -57,8 +57,8 @@ public enum DialectFactory {
 
     POSTGRESQL {
         @Override
-        public Dialect createDialect() {
-            return new PostgreSQLDialect();
+        public DmlDialect createDialect() {
+            return new DmlPostgreSQLDialect();
         }
         @Override
         public boolean productNameMatches(String databaseName) {
@@ -73,8 +73,8 @@ public enum DialectFactory {
 
     SQLSERVER {
         @Override
-        public Dialect createDialect() {
-            return new SQLServerDialect();
+        public DmlDialect createDialect() {
+            return new DmlSQLServerDialect();
         }
         @Override
         public boolean productNameMatches(String databaseName) {
@@ -96,9 +96,9 @@ public enum DialectFactory {
     public abstract boolean productNameMatches(String productName);
 
     /**
-     * Create a {@link Dialect} for the given metadata.
+     * Create a {@link DmlDialect} for the given metadata.
      */
-    public abstract Dialect createDialect();
+    public abstract DmlDialect createDialect();
 
     /**
      * Get the name of the JDBC driver class for this database,

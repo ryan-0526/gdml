@@ -2,6 +2,7 @@ package com.geominfo.gselect.context;
 
 import com.geominfo.bi.ThinQuery;
 import com.geominfo.gselect.mapping.ModelContext;
+import com.geominfo.gselect.util.SelectGenerate;
 
 public class DmlContext {
 
@@ -35,6 +36,8 @@ public class DmlContext {
 
     public String getSelectSql() {
         //todo:使用工具类生成 select
+        SelectGenerate selectGenerate = new SelectGenerate();
+
         return null;
     }
 

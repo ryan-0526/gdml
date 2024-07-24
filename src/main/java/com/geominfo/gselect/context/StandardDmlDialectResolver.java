@@ -6,20 +6,20 @@
  */
 package com.geominfo.gselect.context;
 
-import com.geominfo.gselect.dialect.Dialect;
+import com.geominfo.gselect.dialect.DmlDialect;
 
 /**
  * The standard DialectResolver implementation
  *
  * @author Steve Ebersole
  */
-public final class StandardDialectResolver implements DialectResolver {
+public final class StandardDmlDialectResolver implements DmlDialectResolver {
 
-	public StandardDialectResolver() {
+	public StandardDmlDialectResolver() {
 	}
 
 	@Override
-	public Dialect resolveDialect(DialectType dialectType) {
+	public DmlDialect resolveDialect(DialectType dialectType) {
 		for ( DialectFactory database : DialectFactory.values() ) {
 			if ( database.matchesResolutionInfo( dialectType ) ) {
 				return database.createDialect();
