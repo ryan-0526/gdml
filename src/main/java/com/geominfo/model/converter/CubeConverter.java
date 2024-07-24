@@ -150,7 +150,7 @@ public class CubeConverter {
             calcField.setUniqueId(uid);
             calcField.setCaption(measureElement.getAttribute("caption"));
             calcField.setType("Measure");
-            calcField.setCalculateMember(true);
+            calcField.setCalculateMember(!(expr == null || expr.isEmpty()));
             calcField.setAttributes(
                     Collections.singletonList(
                             new Attribute.Builder()
@@ -193,7 +193,7 @@ public class CubeConverter {
             calcField.setUniqueId(uid);
             calcField.setCaption(dimAttrElement.getAttribute("caption"));
             calcField.setType("Measure");
-            calcField.setCalculateMember(true);
+            calcField.setCalculateMember(!(expr == null || expr.isEmpty()));
             calcField.setAttributes(
                     Collections.singletonList(
                             new Attribute.Builder()

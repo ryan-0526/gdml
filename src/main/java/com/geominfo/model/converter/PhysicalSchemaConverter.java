@@ -194,7 +194,7 @@ public class PhysicalSchemaConverter {
                     if (!dimTableOpt.isPresent()) {
                         throw new RuntimeException("Not found dimension table named " + tableElement.getAttribute("name"));
                     }else {
-                        sourceId = dimTableOpt.get().getUniqueId();
+                        targetId = dimTableOpt.get().getUniqueId();
                     }
 
                 }
