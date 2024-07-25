@@ -192,7 +192,7 @@ public class CubeConverter {
             Field calcField = new Field();
             calcField.setUniqueId(uid);
             calcField.setCaption(dimAttrElement.getAttribute("caption"));
-            calcField.setType("Measure");
+            calcField.setType("Dimension");
             calcField.setCalculateMember(!(expr == null || expr.isEmpty()));
             calcField.setAttributes(
                     Collections.singletonList(
