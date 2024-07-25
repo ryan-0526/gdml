@@ -25,6 +25,12 @@ public class PhysicalSchemaConverter {
 
     private static final XPath xPath = XPathFactory.newInstance().newXPath();
 
+    /**
+     * key uid, value table name
+     */
+    public final static Map<String, String> tableMap = new HashMap<>();
+
+
     public PhysicalSchemaConverter (Document document, DataSource dataSource) {
         this.document = document;
         this.dataSource = dataSource;
@@ -50,8 +56,9 @@ public class PhysicalSchemaConverter {
             String tableName = tableElement.getAttribute("name");
             boolean isFact =
                     factTableNames.contains(tableElement.getAttribute("alias")) || factTableNames.contains("tableName");
+            String uid = UUID.randomUUID().toString();
             Table table = new Table.Builder()
-                    .uniqueId(UUID.randomUUID().toString())
+                    .uniqueId(uid)
                     .schema(dataSource.getSchema())
                     .name(tableName)
                     .caption(tableElement.getAttribute("caption"))
@@ -59,7 +66,7 @@ public class PhysicalSchemaConverter {
                     .factTable(isFact)
                     .dsType(dataSource.getType())
                     .build();
-
+            tableMap.put(tableElement.getAttribute("alias"), uid);
             physicalSchema.getTables().add(table);
         }
         return this;
@@ -109,8 +116,9 @@ public class PhysicalSchemaConverter {
                 }
             }
 
+            String uid = UUID.randomUUID().toString();
             VirtualTable virtualTable = new VirtualTable.Builder()
-                    .uniqueId(UUID.randomUUID().toString())
+                    .uniqueId(uid)
                     .tableName("TS" + System.currentTimeMillis())
                     .caption(queryElement.getAttribute("caption"))
                     .sql(sql)
@@ -120,6 +128,7 @@ public class PhysicalSchemaConverter {
                     .dsType(dataSource.getType())
                     .build();
 
+            tableMap.put(queryElement.getAttribute("caption"), uid);
             physicalSchema.getVirtualTables().add(virtualTable);
         }
         return this;
