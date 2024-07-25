@@ -10,7 +10,7 @@ public class DmlDB2Dialect extends DmlDialect {
     }
 
     @Override
-    public void initFunctionRegistry() {
+    protected void initFunctionRegistry() {
         super.initFunctionRegistry();
         SqlFunctionRegistry functionRegistry = baseFunctionFactory.getFunctionRegistry();
         //todo:注册独属于oracle的函数

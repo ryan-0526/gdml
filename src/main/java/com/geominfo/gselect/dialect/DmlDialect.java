@@ -1,6 +1,7 @@
 package com.geominfo.gselect.dialect;
 
 import com.geominfo.gselect.dialect.funcation.BaseFunctionFactory;
+import com.geominfo.gselect.dialect.funcation.SqlFunctionRegistry;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -15,6 +16,7 @@ public abstract class DmlDialect {
 
     protected BaseFunctionFactory baseFunctionFactory;
 
+
     protected void registerFunctions() {
 
     }
@@ -23,7 +25,7 @@ public abstract class DmlDialect {
         this.baseFunctionFactory = new BaseFunctionFactory();
     }
 
-    public void initFunctionRegistry() {
+    protected void initFunctionRegistry() {
         baseFunctionFactory.aggregates();
     }
 
@@ -79,5 +81,9 @@ public abstract class DmlDialect {
         return "having ";
     }
 
+
+    public SqlFunctionRegistry getSqlFunctionRegistry() {
+        return baseFunctionFactory.getFunctionRegistry();
+    }
 
 }
