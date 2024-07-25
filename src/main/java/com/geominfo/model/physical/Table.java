@@ -6,13 +6,17 @@ package com.geominfo.model.physical;
  */
 public class Table {
 
-    private final String uniqueId;
-    private final String schema;
-    private final String name;
-    private final String caption;
-    private final String datasourceId;
-    private final boolean factTable;
-    private final String dsType;
+    private  String uniqueId;
+    private  String schema;
+    private  String name;
+    private  String caption;
+    private  String datasourceId;
+    private  boolean factTable;
+    private  String dsType;
+
+    public Table() {
+
+    }
 
     private Table(Builder builder) {
         this.uniqueId = builder.uniqueId;

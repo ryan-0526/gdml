@@ -76,6 +76,8 @@ public class ConverterTest {
                 Cube cube = new CubeConverter(document).convert();
                 Schema schema = new Schema(physicalSchema, cube, null);
                 System.out.println(JSONObject.toJSONString(schema));
+
+                System.out.println(JSONObject.parseObject(JSONObject.toJSONString(schema), Schema.class));
             }
 
         }catch (Exception e) {

@@ -6,15 +6,19 @@ package com.geominfo.model.cube;
  */
 public class Attribute {
 
-    private final String uniqueId;
-    private final String caption;
-    private final boolean visible;
-    private final String aggregator;
-    private final String granularity;
-    private final String dataType;
-    private final String originDataType;
-    private final String secondDataType;
-    private final String expression;
+    private  String uniqueId;
+    private  String caption;
+    private  boolean visible;
+    private  String aggregator;
+    private  String granularity;
+    private  String dataType;
+    private  String originDataType;
+    private  String secondDataType;
+    private  String expression;
+
+    public Attribute() {
+
+    }
 
     private Attribute(Builder builder) {
         this.uniqueId = builder.uniqueId;

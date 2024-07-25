@@ -8,15 +8,19 @@ import java.util.List;
  */
 public class VirtualTable {
 
-    private final String uniqueId;
-    private final String sql;
-    private final String caption;
-    private final String datasourceId;
-    private final boolean factTable;
-    private final String tableName;
+    private  String uniqueId;
+    private  String sql;
+    private  String caption;
+    private  String datasourceId;
+    private  boolean factTable;
+    private  String tableName;
 
-    private final String dsType;
-    private final List<Field> fields;
+    private  String dsType;
+    private  List<Field> fields;
+
+    public VirtualTable() {
+
+    }
 
     private VirtualTable(Builder builder) {
         this.uniqueId = builder.uniqueId;
